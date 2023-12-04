@@ -10,7 +10,9 @@
 				<div id="mancalaBoard">
 					<div style="display: flex; flex-direction: row;">
 						<div id="baseSectionA" class="mancalaBase">
-							<div></div>
+							<div>
+								<h1></h1>
+							</div>
 						</div>
 
 						<div id="mancalaStoneSection">
@@ -33,7 +35,9 @@
 							</div>
 						</div>
 						<div id="baseSectionB" class="mancalaBase">
-							<div></div>
+							<div>
+								<h1></h1>
+							</div>
 						</div>
 					</div>
 				</div>
@@ -73,6 +77,10 @@
 			width: 200px;
 			height: 400px;
 		}
+
+		.mancalaBase h1{
+			text-align: center;
+		}
 		.mancalaSection .mancalaBox{
 			display: inline-block;
 		}
@@ -111,6 +119,9 @@
 			const mancalaBoard = $("#mancalaBoard");
 			const mancalaSectionA = $("#mancalaSectionA");
 			const mancalaSectionB = $("#mancalaSectionB");
+
+			const mancalaBaseA = $("#baseSectionA");
+			const mancalaBaseB = $("#baseSectionB");
 			/*
 			*classes
 			*/
@@ -217,6 +228,11 @@
 				}
 			}
 
+			function reloadBase() {
+				mancalaBaseA.find('h1').html(bases.sectionA);
+				mancalaBaseB.find('h1').html(bases.sectionB);
+			}
+
 			function pebbleImage(size) {
 				let retVal = '';
 
@@ -241,24 +257,42 @@
 				setBoxValue(section,position,0);
 
 				while(pebbleSize > 0) {
-					if(position >= boxSize) {
-						setBaseValue(section);
-						//swap posistion
-						section = (section == 'a') ? 'b' : 'a';
-						position = -1; //so next value is 0
-						pebbleSize++; //add so the pebble will move up or down
-					}
-
 					position++;
-					letCurPebbleSize = getBoxValue(section, position);
-					setBoxValue(section, position, letCurPebbleSize + 1);
-
-					//deduct pebble size
 					pebbleSize--;
+
+					if(position == boxSize) {
+						console.log('new position');
+						//add base value
+						section = invertSection(section);
+						setBaseValue(section, getBaseValue(section) + 1);
+						pebbleSize--;
+
+						if(pebbleSize == 0) {
+							let lastSection = invertSection(section);
+							if(lastSection == usersTurn) {
+								usersTurn = invertSection(usersTurn);
+							}
+						}
+
+						pebbleSize--;
+						position = 0;
+					} 
+					
+					if(pebbleSize > 0) {
+						setBoxValue(section, position, getBoxValue(section, position) + 1);
+					}
 				}
+
+				//logic
+				usersTurn = invertSection(usersTurn);
 
 				reloadPebbles();
 			}
+
+			function invertSection(section) {
+				return (section == 'a') ? 'b' : 'a';
+			}
+
 
 			mancalaBox.on('click', function(e){
 				if($(e.target).is('img')){
@@ -268,6 +302,7 @@
 
 					if(dataSection == usersTurn) {
 						movePebbleValue(dataSection, dataPosition);
+						reloadBase();
 					}
 
 				}
