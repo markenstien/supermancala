@@ -29,14 +29,14 @@
 
     define('GLOBALS' , APPROOT.DS.'classes/globals');
 
-    define('SITE_NAME' , 'medicad.store');
+    define('SITE_NAME' , 'supermancala');
 
-    define('COMPANY_NAME' , 'Cadaceous Medical');
+    define('COMPANY_NAME' , 'supermancala');
 
-    define('COMPANY_NAME_ABBR', 'Cadaceous');
-    define('COMPANY_EMAIL', 'info@medicad.store');
+    define('COMPANY_NAME_ABBR', 'supermancala');
+    define('COMPANY_EMAIL', 'info@supermancala.fun');
     define('COMPANY_TEL', '+639260617765');
-    define('COMPANY_ADDRESS', ' 29-A Seminary Rd, Project 8, Quezon City, 1106 Metro Manila');
+    define('COMPANY_ADDRESS', '');
 
     
 
