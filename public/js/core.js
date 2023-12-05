@@ -1,4 +1,4 @@
-const URL = 'http://dev.medimart';
+const URL = 'https://sungkaonline.fun';
 const DS  = '/';
 
 const getURL = function(called_url = null){

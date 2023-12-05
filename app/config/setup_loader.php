@@ -59,14 +59,14 @@
         break;
 
         case 'up':
-            define('URL' , 'https://medicad.store');
+            define('URL' , 'https://sungkaonline.fun');
             define('DBVENDOR' , 'mysql');
             define('DBHOST' , 'localhost');
-            define('DBUSER' , 'korpzpru_th_main');
-            define('DBPASS' , 'Y[@h=Ytz;(f}');
-            define('DBNAME' , 'korpzpru_cadaceous');
+            define('DBUSER' , '');
+            define('DBPASS' , '');
+            define('DBNAME' , '');
 
-            define('BASECONTROLLER' , 'HomeController');
+            define('BASECONTROLLER' , 'GameController');
             define('BASEMETHOD' , 'index');
         break;
     }
