@@ -17,7 +17,7 @@
 		{
 			if(is_null($this->_attachmentForm)) {
 				$this->_attachmentForm = new AttachmentForm();
-				$this->_attachmentModel = model('AttachmentModel');
+				// $this->_attachmentModel = model('AttachmentModel');
 				$this->data['_attachmentForm'] = $this->_attachmentForm;
 			}
 
