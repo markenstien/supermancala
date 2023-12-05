@@ -59,7 +59,7 @@
         break;
 
         case 'up':
-            define('URL' , 'https://sungkaonline.fun');
+            define('URL' , 'http://sungkaonline.fun');
             define('DBVENDOR' , 'mysql');
             define('DBHOST' , 'localhost');
             define('DBUSER' , '');

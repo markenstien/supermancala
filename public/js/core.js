@@ -1,4 +1,4 @@
-const URL = 'https://sungkaonline.fun';
+const URL = 'http://sungkaonline.fun';
 const DS  = '/';
 
 const getURL = function(called_url = null){
