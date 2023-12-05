@@ -1,24 +1,23 @@
 <?php build('content') ?>
 	<div class="card">
 		<div class="card-header">
-			<h4 class="card-title">MANCALA</h4>
+			<h4 class="card-title">MANCALA BOARD</h4>
 		</div>
 
 		<div class="card-body">
-			
 			<div id="mancalaBoardContainer">
 				<div id="mancalaBoard">
 					<div style="display: flex; flex-direction: row;">
-						<div id="baseSectionA" class="mancalaBase">
-							<div>
-								<h1></h1>
+						<div id="baseSectionB" class="mancalaBase">
+							<div class="player-b">
+								<h1>0</h1>
 							</div>
 						</div>
 
 						<div id="mancalaStoneSection">
 							<div id="mancalaSectionA" class="mancalaSection">
 								<?php for($i = 0 ; $i < $boardLength; $i++) :?>
-									<div class="mancalaBox" data-section="a" data-column="<?php echo $i?>" id="boxSecA_<?php echo $i?>">
+									<div class="mancalaBox player-a" data-section="a" data-column="<?php echo $i?>" id="boxSecA_<?php echo $i?>">
 										<img src="" data-position="<?php echo $i?>" data-section="a">
 										<div class="box-value">4</div>
 									</div>
@@ -26,22 +25,40 @@
 							</div>	
 
 							<div id="mancalaSectionB" class="mancalaSection">
-								<?php for($i = 0 ; $i < $boardLength; $i++) :?>
-									<div class="mancalaBox" data-section="b" data-column="<?php echo $i?>" id="boxSecB_<?php echo $i?>">
+								<?php for($i = ($boardLength -1) ; $i >= 0; $i--) :?>
+									<div class="mancalaBox player-b" data-section="b" data-column="<?php echo $i?>" id="boxSecB_<?php echo $i?>">
 										<img src="" data-position="<?php echo $i?>" data-section="b">
 										<div class="box-value">4</div>
 									</div>
 								<?php endfor?>
 							</div>
 						</div>
-						<div id="baseSectionB" class="mancalaBase">
-							<div>
-								<h1></h1>
+						<div id="baseSectionA" class="mancalaBase">
+							<div class="player-a">
+								<h1>0</h1>
 							</div>
 						</div>
 					</div>
 				</div>
 			</div>
+		</div>
+
+		<div class="card-footer">
+			<p>Instructions</p>
+			<ul>
+				<li>Choose your side blue or pink.</li>
+				<li>The game will end if there are no more pebbles on either side.</li>
+				<li>The highest pebbles on their base will win.</li>
+				<li>Mechanics
+					<ul>
+						<li>The players has 1 turn each.</li>
+						<li>If the pebble last stop is on players turnee base the player will have another turn.</li>
+						<li>If the pebble returns back to your base and the box is empty, you will be able to steal
+							the counter part of that box and put it to your base.</li>
+					</ul>
+				</li>
+			</ul>
+			<h1>Happy Gaming.</h1>
 		</div>
 	</div>
 <?php endbuild()?>
@@ -72,10 +89,19 @@
 
 		}
 		.mancalaBase div {
-			background: #B31312;
 			border-radius: 20px;
 			width: 200px;
 			height: 400px;
+			color: #fff;
+			padding-top: 150px;
+		}
+
+		.mancalaBase div.player-a{
+			background: #132043;
+		}
+
+		.mancalaBase div.player-b{
+			background: #C70039;
 		}
 
 		.mancalaBase h1{
@@ -89,9 +115,16 @@
 			width: 15%;
 			height: 150px;
 			border-radius: 50%;
-			background: #161A30;
 			margin-right: 5px;
 			margin-left: 5px;
+		}
+
+		.mancalaBox.player-a {
+			background: #132043;
+		}
+
+		.mancalaBox.player-b {
+			background: #C70039;
 		}
 
 		.mancalaBox img{
@@ -111,203 +144,6 @@
 <?php endbuild()?>
 
 <?php build('scripts') ?>
-	<script type="text/javascript">
-		$(document).ready(function(){
-			const boxSize = 6;
-			/**
-			 * ids*/
-			const mancalaBoard = $("#mancalaBoard");
-			const mancalaSectionA = $("#mancalaSectionA");
-			const mancalaSectionB = $("#mancalaSectionB");
-
-			const mancalaBaseA = $("#baseSectionA");
-			const mancalaBaseB = $("#baseSectionB");
-			/*
-			*classes
-			*/
-			const mancalaBox = $('.mancalaBox');
-			const pebblesPath = '/uploads/pebbles/';
-
-			const mancalaBoxClassName = 'mancalaBox';
-			const mancalaBoxValueClassName = 'box-value';
-
-			let boxes = {
-				sectionA : [],
-				sectionB : []
-			};
-
-			let bases = {
-				sectionA : 0,
-				sectionB : 0
-			};
-
-			let usersTurn = 'a';
-
-
-			init();
-
-			function init() {
-				loadStartingBoxValue(2);
-				reloadPebbles();
-			}
-
-			function setBoxValue(section,position,size) {
-				switch(section) {
-					case 'a':
-						boxes.sectionA[position] = size;
-					break;
-
-					case 'b':
-						boxes.sectionB[position] = size;
-					break;
-				}
-			}
-
-			function getBoxValue(section,position) {
-				let retVal;
-
-				switch(section) {
-					case 'a':
-						retVal = boxes.sectionA[position];
-					break;
-
-					case 'b':
-						retVal = boxes.sectionB[position];
-					break;
-				}
-
-				return retVal;
-			}
-
-			function setBaseValue(section,size) {
-				switch(section) {
-					case 'a':
-						bases.sectionA = size;
-					break;
-
-					case 'b':
-						bases.sectionB = size;
-					break;
-				}
-			}
-
-			function getBaseValue(section) {
-				let retVal;
-
-				switch(section) {
-					case 'a':
-						retVal = bases.sectionA;
-					break;
-
-					case 'b':
-						retVal = bases.sectionB;
-					break;
-				}
-
-				return retVal;
-			}
-
-			function loadStartingBoxValue(size) {
-				for(let i = 0; i < boxSize; i++) {
-					setBoxValue('a', i, size);
-					setBoxValue('b', i, size);
-				}
-			}
-
-			function reloadPebbles() {
-				for(let i = 0; i < boxes.sectionA.length; i++) {
-					let boxValue = boxes.sectionA[i];
-					$(`#boxSecA_${i}`).find('img').attr('src', pebbleImage(boxValue));
-					$(`#boxSecA_${i}`).find('.box-value').html(boxValue);
-				}
-
-				for(let i = 0; i < boxes.sectionB.length; i++) {
-					let boxValue = boxes.sectionB[i];
-					$(`#boxSecB_${i}`).find('img').attr('src', pebbleImage(boxValue));
-					$(`#boxSecB_${i}`).find('.box-value').html(boxValue);
-				}
-			}
-
-			function reloadBase() {
-				mancalaBaseA.find('h1').html(bases.sectionA);
-				mancalaBaseB.find('h1').html(bases.sectionB);
-			}
-
-			function pebbleImage(size) {
-				let retVal = '';
-
-				if(size > 10) {
-					retVal = `${pebblesPath}peb_many.png`;
-				} else if(size > 5) {
-					retVal = `${pebblesPath}peb_many.png`;
-				} else if(size == 0) {
-					retVal = `${pebblesPath}peb_0.png`;
-				} else {
-					retVal = `${pebblesPath}peb_${size}.png`;
-				}
-
-				return retVal;
-			}
-
-			function movePebbleValue(section,position) {
-				let pebbleSize = getBoxValue(section, position);
-				let letCurPebbleSize;
-
-				//remove pebbles from that box
-				setBoxValue(section,position,0);
-
-				while(pebbleSize > 0) {
-					position++;
-					pebbleSize--;
-
-					if(position == boxSize) {
-						console.log('new position');
-						//add base value
-						section = invertSection(section);
-						setBaseValue(section, getBaseValue(section) + 1);
-						pebbleSize--;
-
-						if(pebbleSize == 0) {
-							let lastSection = invertSection(section);
-							if(lastSection == usersTurn) {
-								usersTurn = invertSection(usersTurn);
-							}
-						}
-
-						pebbleSize--;
-						position = 0;
-					} 
-					
-					if(pebbleSize > 0) {
-						setBoxValue(section, position, getBoxValue(section, position) + 1);
-					}
-				}
-
-				//logic
-				usersTurn = invertSection(usersTurn);
-
-				reloadPebbles();
-			}
-
-			function invertSection(section) {
-				return (section == 'a') ? 'b' : 'a';
-			}
-
-
-			mancalaBox.on('click', function(e){
-				if($(e.target).is('img')){
-					let targetEl = $(e.target);
-					let dataPosition = targetEl.data('position');
-					let dataSection = targetEl.data('section');
-
-					if(dataSection == usersTurn) {
-						movePebbleValue(dataSection, dataPosition);
-						reloadBase();
-					}
-
-				}
-			});
-		});
-	</script>
+	<script type="text/javascript" src="/public/js/mancalaboard/main.js"></script>
 <?php endbuild()?>
 <?php loadTo()?>

@@ -53,7 +53,7 @@
     $system['version']  = 'N/A';
 
 
-    $system['app_name'] = 'Cadaceous Medical System';
+    $system['app_name'] = 'Mancala Game';
 
     $ui = [
         'vendor' => 'cork'
