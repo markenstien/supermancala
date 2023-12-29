@@ -1,10 +1,5 @@
 $(document).ready(function(){
 	const boxSize = 6;
-	/**
-	 * ids*/
-	const mancalaBoard = $("#mancalaBoard");
-	const mancalaSectionA = $("#mancalaSectionA");
-	const mancalaSectionB = $("#mancalaSectionB");
 
 	const mancalaBaseA = $("#baseSectionA");
 	const mancalaBaseB = $("#baseSectionB");
@@ -14,8 +9,7 @@ $(document).ready(function(){
 	const mancalaBox = $('.mancalaBox');
 	const pebblesPath = '/uploads/pebbles/';
 
-	const mancalaBoxClassName = 'mancalaBox';
-	const mancalaBoxValueClassName = 'box-value';
+	let matchType = 'AI';
 
 	let boxes = {
 		sectionA : [],
@@ -29,15 +23,24 @@ $(document).ready(function(){
 
 	let usersTurn = 'a';
 	let userLastTurn = '';
-	let allowTurn = true;
-
 	let boxCounterParts = {
 		sectionA : [],
 		sectionB : []
 	};
+
+	let messages = {
+		playerATurn: 'Player A Turn to Move',
+		playerAMoved : 'Player A Moving Pebbles',
+		playerBTurn : 'Player B Turn to Move',
+		playerBMoved : 'Player B Moving Pebbles'
+	};
+
+	let aiMoveLogs = [];
+
 	init();
 
 	function init() {
+		
 		loadStartingBoxValue(4);
 
 		for(let i = 0; i < boxSize ; i++) {
@@ -50,6 +53,7 @@ $(document).ready(function(){
 			counter++;
 		}
 		reloadPebbles();
+		gameMessage(messages['playerATurn']);
 	}
 
 	function setBoxValue(section,position,size) {
@@ -175,7 +179,6 @@ $(document).ready(function(){
 
 	function movePebbleValue(section,position) {
 		let pebbleSize = getBoxValue(section, position);
-		let letCurPebbleSize;
 		let turnIteration = 0;
 
 		//remove pebbles from that box
@@ -254,20 +257,120 @@ $(document).ready(function(){
 	}
 
 
-	mancalaBox.on('click', function(e){
-		if($(e.target).is('img')){
-			let targetEl = $(e.target);
-			let dataPosition = targetEl.data('position');
-			let dataSection = targetEl.data('section');
+	/**
+	 * AI ACTIONS
+	 */
+	//this action will select shortest way to score a point
+	function shortestMoveLogic() {
+		let aiboxes = boxes['sectionB'];
+		let boxPositionMove = undefined;
 
-			if(dataSection == usersTurn) {
-				//click animation
-				targetEl.fadeTo("slow", 0.15).fadeTo("fast", 1);
+		for(let i in aiboxes) {
+			console.log(i);
+			let boxValue = aiboxes[i];
+			//calculate distance by getting the value and deducting the range
+			let boxDistance = boxValue - i;
 
-				userLastTurn = usersTurn;
-				movePebbleValue(dataSection, dataPosition);
-				reloadBase();
+			if(typeof boxPositionMove == 'undefined') {
+				boxPositionMove = boxValue;
+			}else{
+				if((boxDistance < boxPositionMove) && boxDistance > 0) {
+					boxPositionMove = boxDistance;
+				}
 			}
 		}
+
+		return boxPositionMove;
+	}
+
+	function randomMoveLogic() {
+		let aiboxes = boxes['sectionB'];
+		//boxes with values
+		let boxesToLoop = [];
+
+		for(let i in aiboxes) {
+			if(aiboxes[i] > 0) {
+				boxesToLoop.push(i);
+			}	
+		}
+
+		if(boxesToLoop.length > 0) {
+			let randomMove = Math.round(Math.random() * (boxesToLoop.length - 1));
+			console.log([
+				'randomMove',
+				randomMove,
+				boxesToLoop
+			]);
+			randomPosition = boxesToLoop[randomMove];
+		} else {
+			//game over
+			return false;
+		}
+
+		return randomPosition;
+	}
+
+	function aiMove() {
+		let clickOnSection = randomMoveLogic();
+		aiMoveLogs.push("AI Move: CLICK BOX # " + (parseInt(clickOnSection) + 1));
+		gameMessage(messages['playerBMoved']);
+		movePebbleValue('b', clickOnSection);
+		reloadBase();
+
+		userLastTurn = 'b';
+		gameLogs();
+		if(usersTurn == 'b') {
+			gameMessage(messages['playerBTurn']);
+			setTimeout(function() {
+				aiMove();
+			}, 3000);
+		} else {
+			gameMessage(messages['playerATurn']);
+		}
+	}
+
+
+	function gameMessage(message) {
+		$("#gameMessage").html(message);
+	}
+
+	function gameLogs() {
+		let logs = '<ol>';
+		for(let i in aiMoveLogs) {
+			logs += '<li>' +aiMoveLogs[i]+ '</li>';
+		}
+		logs += '</ol>';
+
+		console.log(aiMoveLogs);
+		$("#gameLogs").html(logs);
+	}
+	mancalaBox.on('click', function(e){
+		gameLogs();
+		if(matchType == 'AI' && usersTurn == 'b') {
+
+		} else {
+			if($(e.target).is('img')){
+				let targetEl = $(e.target);
+				let dataPosition = targetEl.data('position');
+				let dataSection = targetEl.data('section');
+	
+				if(dataSection == usersTurn) {
+					//click animation
+					targetEl.fadeTo("slow", 0.15).fadeTo("fast", 1);
+	
+					userLastTurn = usersTurn;
+					movePebbleValue(dataSection, dataPosition);
+					reloadBase();
+				}
+
+				if(usersTurn == 'b') {
+					gameMessage(messages['playerBTurn']);
+					setTimeout(function() {
+						aiMove();
+					  }, 3000);
+				}
+			}
+		}
+		
 	});
 });

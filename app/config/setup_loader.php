@@ -18,7 +18,7 @@
             define('DBPASS' , '');
             define('DBNAME' , 'th_mancala');
 
-            define('BASECONTROLLER' , 'AuthController');
+            define('BASECONTROLLER' , 'GameController');
             define('BASEMETHOD' , 'index');
 
             ini_set('display_errors', 1);

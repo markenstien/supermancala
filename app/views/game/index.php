@@ -6,6 +6,7 @@
 
 		<div class="card-body">
 			<div id="mancalaBoardContainer">
+				<div id="gameMessage"></div>
 				<div id="mancalaBoard">
 					<div style="display: flex; flex-direction: row;">
 						<div id="baseSectionB" class="mancalaBase">
@@ -59,6 +60,8 @@
 				</li>
 			</ul>
 			<h1>Happy Gaming.</h1>
+
+			<div class="mt-3" id="gameLogs"></div>
 		</div>
 	</div>
 <?php endbuild()?>
@@ -139,6 +142,12 @@
 			font-weight: bold;
 			text-align: center;
 			font-size: 15pt;
+		}
+
+		#gameMessage{
+			text-align: center;
+			font-size: 2em;
+			background-color: #5ae55a;
 		}
 	</style>
 <?php endbuild()?>
