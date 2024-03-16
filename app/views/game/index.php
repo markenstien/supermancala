@@ -5,6 +5,10 @@
 		</div>
 
 		<div class="card-body">
+			<div id="roboImageContainer">
+				<img src="/public/uploads/robots/robo_a.png" alt="" id="roboImage">
+				<h4 class="mt-3">Bot is thinking ..</h4>
+			</div>
 			<div id="mancalaBoardContainer">
 				<div id="gameMessage"></div>
 				<div id="mancalaBoard">
@@ -148,6 +152,20 @@
 			text-align: center;
 			font-size: 2em;
 			background-color: #5ae55a;
+		}
+
+		#roboImageContainer{
+			display: block;
+			position: absolute;
+			text-align: center;
+			padding-top: 70px;
+			z-index: 1000;
+			width: 100%;
+			height: 100%;
+			background-color: rgba(0, 0, 0, .5);
+			color: #fff;
+
+			display: none;
 		}
 	</style>
 <?php endbuild()?>

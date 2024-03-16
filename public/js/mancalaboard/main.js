@@ -3,11 +3,13 @@ $(document).ready(function(){
 
 	const mancalaBaseA = $("#baseSectionA");
 	const mancalaBaseB = $("#baseSectionB");
+	let FIRST_INSTANCE = true;
 	/*
 	*classes
 	*/
 	const mancalaBox = $('.mancalaBox');
 	const pebblesPath = '/uploads/pebbles/';
+	const robotPath = '/uploads/robots/';
 
 	let matchType = 'AI';
 
@@ -54,6 +56,8 @@ $(document).ready(function(){
 		}
 		reloadPebbles();
 		gameMessage(messages['playerATurn']);
+
+		FIRST_INSTANCE = false;
 	}
 
 	function setBoxValue(section,position,size) {
@@ -143,18 +147,40 @@ $(document).ready(function(){
 
 	function reloadPebbles() {
 		for(let i = 0; i < boxes.sectionA.length; i++) {
-			let boxValue = boxes.sectionA[i];
+			let boxValue = parseInt(boxes.sectionA[i]);
+			let boxValueHTML = $(`#boxSecA_${i}`).find('.box-value');
 
-			$(`#boxSecA_${i}`).find('img').attr('src', pebbleImage(boxValue));
-			$(`#boxSecA_${i}`).find('.box-value').html(boxValue);
+			let oldBoxValue = parseInt(boxValueHTML.html());
+			animateBoxValueChange(`#boxSecA_${i}`, boxValue, i, '#132043', boxValue != oldBoxValue);
 		}
 
 		for(let i = 0; i < boxes.sectionB.length; i++) {
 			let boxValue = boxes.sectionB[i];
-			$(`#boxSecB_${i}`).find('img').attr('src', pebbleImage(boxValue));
-			$(`#boxSecB_${i}`).find('.box-value').html(boxValue);
+			let boxValueHTML = $(`#boxSecA_${i}`).find('.box-value');
+			let oldBoxValue = parseInt(boxValueHTML.html());
+			animateBoxValueChange(`#boxSecB_${i}`, boxValue, i, '#C70039', boxValue != oldBoxValue);
 		}
 	}
+
+	function animateBoxValueChange(boxId, boxValue, index, defaultColor, valueChange = false) {
+		// $(boxId).css('background-color', defaultColor);
+		$(boxId).find('img').attr('src', pebbleImage(boxValue));
+		$(boxId).find('.box-value').html(boxValue);
+		console.log(FIRST_INSTANCE);
+
+	}
+
+
+	// function animateBoxValueChange(index, boxId, defaultColor, valueChange = false) {
+	// 	if(valueChange) {
+	// 		setTimeout(function(){
+	// 			$(boxId).css('background-color', 'yellow');
+	// 			setTimeout(function(){
+	// 				$(boxId).css('background-color', defaultColor);
+	// 			}, 200);
+	// 		}, (index+1) * 200);
+	// 	}
+	// }
 
 	function reloadBase() {
 		mancalaBaseA.find('h1').html(bases.sectionA);
@@ -175,6 +201,31 @@ $(document).ready(function(){
 		}
 
 		return retVal;
+	}
+
+	function robotImage() {
+		let images = [
+			'robo_b',
+			'robo_a'
+		];
+
+		let randomImage = Math.floor(Math.random() * 2);
+		let selectedImage = images[randomImage];
+		return selectedImage;
+	}
+
+	/**
+	 * action show or hide
+	 */
+	function toggleRoboImage(action) {
+		if(action == 'hide') {
+			$('#roboImageContainer').hide();
+		} else {
+			let roboImage =  robotPath + '/' + robotImage() + '.png';
+			$('#roboImage').attr('src', roboImage);
+			$('#roboImageContainer').show();
+		}
+		
 	}
 
 	function movePebbleValue(section,position) {
@@ -364,10 +415,16 @@ $(document).ready(function(){
 				}
 
 				if(usersTurn == 'b') {
+					setTimeout(function(){
+						toggleRoboImage('show');
+					}, 1000);
 					gameMessage(messages['playerBTurn']);
+					setTimeout(function(){
+						toggleRoboImage('hide');
+					}, 3000);
 					setTimeout(function() {
 						aiMove();
-					  }, 3000);
+					  }, 4000);
 				}
 			}
 		}
