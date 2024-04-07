@@ -1,11 +1,9 @@
 <?php 
-	load(['UserService', 'OrderService'], SERVICES);
+	load(['UserService'], SERVICES);
 	load(['UserForm'] , APPROOT.DS.'form');
 
 	use Form\UserForm;
 	use Services\UserService;
-	use Services\OrderService;
-
 
 	class AuthController extends Controller
 	{	
@@ -15,7 +13,6 @@
 			$this->user = model('UserModel');
 			$this->_form = new UserForm();
 			$this->meta = model('CommonMetaModel');
-			$this->serviceOrder = new OrderService();
 		}
 
 		public function index()
@@ -36,16 +33,10 @@
 					return request()->return();
 				}else
 				{
-					Flash::set( "Welcome Back !" . auth('first_name'));
+					Flash::set( "Welcome Back !" . auth('firstname'));
 				}
-
-				$cart = OrderService::getPurchaseSession('cart');
-
-				if(!empty($cart)) {
-					Flash::set("Welcome back ".whoIs('firstname')." continue your shopping");
-					return redirect(_route('cart:index'));
-				}
-				return redirect('DashboardController');
+				
+				return redirect(_route('game:index'));
 			}
 
 			if(!empty(whoIs())) {
@@ -107,7 +98,7 @@
 
 			$emailContent = " Good day <strong>{$user->firstname}</strong>,<br/>";
 			$emailContent .= " You Recieved this email because you used your email to register on ". COMPANY_NAME .'<br/>';
-			$emailContent .= " Verify your registration to enjoy Always new and affordable drug, prices make your hearts healthy too. <br/></br>";
+			$emailContent .= " Verify your registration to enjoy Super Mancala Game!. <br/></br>";
 			$emailContent .= " Click this {$link} or use this code to activate your account : ==> ".$this->meta->retVal['code'];
 
 			$emailBody = wEmailComplete($emailContent);
@@ -140,7 +131,7 @@
 					if($isOkay) {
 						Flash::set("Account Verified");
 						$this->user->startAuth($codeValue->parent_id);
-						return redirect(_route('user:show', $codeValue->parent_id));
+						return redirect(_route('game:index'));
 					}
 				} else {
 					Flash::set("Request code not exist Action failed", 'danger');

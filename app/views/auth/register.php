@@ -4,7 +4,7 @@
       <div class="card">
         <div class="card-body">
             <?php Flash::show()?>
-            <img src="<?php echo _path_upload_get('cadaceous_logo.png');?>" alt="<?php echo COMPANY_NAME?> Logo"
+            <img src="<?php echo _path_upload_get('pebbles/peb_3.png');?>" alt="<?php echo COMPANY_NAME?> Logo"
               style="width:150px; margin:0px auto; display:block">
             <h5 class="text-muted fw-normal mb-4">Create your account.</h5>
             <?php  __( $form->start() ); ?>
@@ -35,4 +35,4 @@
   </div>
 </div>
 <?php endbuild()?>
-<?php loadTo('tmp/landing')?>
+<?php loadTo('tmp/basic')?>

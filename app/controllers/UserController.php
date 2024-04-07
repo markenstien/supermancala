@@ -11,8 +11,7 @@
 			$this->model = model('UserModel');
 			
 			$this->data['page_title'] = ' Users ';
-			$this->data['user_form'] = new UserForm();
-			$this->modelOrder = model('OrderModel');
+			$this->data['form'] = new UserForm();
 		}
 
 		public function index()
@@ -68,7 +67,7 @@
 
 				if($res) {
 					Flash::set( $this->model->getMessageString());
-					return redirect( _route('user:show' , $id) );
+					return redirect( _route('user:edit' , $id) );
 				}else
 				{
 					Flash::set( $this->model->getErrorString() , 'danger');
@@ -79,16 +78,16 @@
 			$user = $this->model->get($id);
 
 			$this->data['id'] = $id;
-			$this->data['user_form']->init([
+			$this->data['form']->init([
 				'url' => _route('user:edit',$id)
 			]);
 
-			$this->data['user_form']->setValueObject($user);
-			$this->data['user_form']->addId($id);
-			$this->data['user_form']->remove('submit');
-			$this->data['user_form']->remove('user_type');
+			$this->data['form']->setValueObject($user);
+			$this->data['form']->addId($id);
+			$this->data['form']->remove('submit');
+			$this->data['form']->remove('user_type');
 
-			$this->data['user_form']->add([
+			$this->data['form']->add([
 				'name' => 'password',
 				'type' => 'password',
 				'class' => 'form-control',
@@ -98,29 +97,17 @@
 			]);
 
 			if(!isEqual(whoIs('user_type'), 'admin'))
-				$this->data['user_form']->remove('user_type');
+				$this->data['form']->remove('user_type');
 
 			return $this->view('user/edit' , $this->data);
 		}
 
 		public function show($id)
 		{
+			return $this->edit($id);
+			
 			_requireAuth();
 			$user = $this->model->get($id);
-
-			if(!$user) {
-				Flash::set(" This user no longer exists " , 'warning');
-				return request()->return();
-			}
-			$this->data['user'] = $user;
-			$this->data['is_admin'] = $this->is_admin;
-
-			$this->data['orders'] = $this->modelOrder->all([
-				'customer_id' => whoIs('id')
-			], 'id desc');
-
-			$this->data['req'] = request()->inputs();
-			$this->data['id'] = $id;
 			return $this->view('user/show' , $this->data);
 		}
 

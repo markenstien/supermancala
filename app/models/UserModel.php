@@ -264,7 +264,6 @@
 				$this->addError( implode(',', $errors));
 				return false;
 			}
-
 			return $this->startAuth($user->id);
 		}
 

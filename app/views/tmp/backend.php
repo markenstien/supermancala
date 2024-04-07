@@ -50,7 +50,6 @@
                             <?php echo COMPANY_NAME?>
                         </a>
                         <?php if($auth) :?>
-                            <?php $notifications = _notify_pull_items($auth->id)?>
                             <form class="search-form">
                                 <div class="input-group">
                                     <div class="input-group-text">
@@ -60,49 +59,14 @@
                                 </div>
                             </form>
                             <ul class="navbar-nav">
-                                  <li class="nav-item dropdown">
-                                    <a class="nav-link dropdown-toggle" href="#" id="notificationDropdown" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                      <i data-feather="bell"></i>
-                                      <?php if($notifications) :?>
-                                      <div class="indicator">
-                                        <div class="circle"></div>
-                                      </div>
-                                      <?php endif?>
-                                    </a>
-                                    <?php if($notifications) :?>
-                                    <div class="dropdown-menu p-0" aria-labelledby="notificationDropdown">
-                                      <div class="px-3 py-2 d-flex align-items-center justify-content-between border-bottom">
-                                        <p>(<?php echo count($notifications) ?>) Notification</p>
-                                        <a href="javascript:;" class="text-muted">Clear all</a>
-                                      </div>
-                                      <div class="p-1">
-                                        <?php foreach($notifications as $key => $row) :?>
-                                          <a href="<?php echo $row->href ?>" class="dropdown-item d-flex align-items-center py-2">
-                                          <div class="wd-30 ht-30 d-flex align-items-center justify-content-center bg-danger rounded-circle me-3">
-                                            <i class="icon-sm text-white" data-feather="alert-circle"></i>
-                                          </div>
-                                          <div class="flex-grow-1 me-2">
-                                            <p><?php echo $row->message?></p>
-                                            <p class="tx-12 text-muted">30 min ago</p>
-                                          </div>    
-                                        </a>
-                                        <?php endforeach?>
-                                      </div>
-                                      <div class="px-3 py-2 d-flex align-items-center justify-content-center border-top">
-                                        <a href="javascript:;">View all</a>
-                                      </div>
-                                    </div>
-                                    <?php endif?>
-                                  </li>
                               <li class="nav-item dropdown">
-                                <a class="nav-link dropdown-toggle" href="<?php echo _route('user:show' , $auth->id)?>" id="profileDropdown" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                  <img class="wd-30 ht-30 rounded-circle" src="<?php echo $auth->profile?>" alt="profile">
+                                <a class="nav-link dropdown-toggle" href="<?php echo _route('user:show' , $auth->id)?>" 
+                                  id="profileDropdown" role="button" data-bs-toggle="dropdown" aria-haspopup="true" 
+                                    aria-expanded="false">
+                                    <?php echo $auth->firstname?>
                                 </a>
                                 <div class="dropdown-menu p-0" aria-labelledby="profileDropdown">
                                   <div class="d-flex flex-column align-items-center border-bottom px-5 py-3">
-                                    <div class="mb-3">
-                                      <img class="wd-80 ht-80 rounded-circle" src="<?php echo $auth->profile?>" alt="">
-                                    </div>
                                     <div class="text-center">
                                       <p class="tx-16 fw-bolder"><?php echo $auth->firstname . ' '.$auth->lastname?></p>
                                       <p class="tx-12 text-muted"><?php echo $auth->user_type ?></p>
@@ -132,91 +96,6 @@
                     </div>
                 </div>
             </nav>
-            <?php if($auth) :?>
-                <nav class="bottom-navbar">
-                    <div class="container">
-                        <ul class="nav page-navigation">
-                            <li class="nav-item">
-                                <a class="nav-link" href="<?php echo _route('dashboard:index')?>">
-                                    <i class="link-icon" data-feather="box"></i>
-                                    <span class="menu-title">Dashboard</span>
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="<?php echo _route('order:index')?>">
-                                    <i class="link-icon" data-feather="box"></i>
-                                    <span class="menu-title">Orders</span>
-                                </a>
-                            </li>
-                            <?php if(isEqual(whoIs('user_type'),'customer')) :?>
-                              <li class="nav-item">
-                                  <a class="nav-link" href="<?php echo _route('home:shop')?>">
-                                      <i class="link-icon" data-feather="box"></i>
-                                      <span class="menu-title">Shop now</span>
-                                  </a>
-                              </li>
-                            <?php endif?>
-                            <?php if(!isEqual(whoIs('user_type'),'customer')) :?>
-                              <li class="nav-item">
-                                  <a class="nav-link" href="<?php echo _route('transaction:purchase')?>">
-                                      <i class="link-icon" data-feather="box"></i>
-                                      <span class="menu-title">Transaction</span>
-                                  </a>
-                              </li>
-                            <?php endif?>
-                            
-                            <?php if(isEqual($auth->user_type, ['admin','supervisor'])) :?>
-                            <li class="nav-item">
-                                <a href="#" class="nav-link">
-                                    <i class="link-icon" data-feather="mail"></i>
-                                    <span class="menu-title">Others</span>
-                                    <i class="link-arrow"></i>
-                                </a>
-                                <div class="submenu">
-                                    <ul class="submenu-item">
-                                        <li class="nav-item"><a class="nav-link" href="<?php echo _route('payment:index')?>">Payments</a></li>
-                                        <li class="nav-item"><a class="nav-link" href="<?php echo _route('stock:index')?>">Stocks</a></li>
-                                        <li class="nav-item">
-                                          <a class="nav-link" href="<?php echo _route('user:index')?>">
-                                              <span class="menu-title">Users</span>
-                                          </a>
-                                        </li>
-                                        <li class="nav-item">
-                                          <a class="nav-link" href="<?php echo _route('item:index')?>">
-                                              <span class="menu-title">Items</span>
-                                          </a>
-                                        </li>
-                                        <!-- <li class="nav-item">
-                                          <a class="nav-link" href="<?php echo _route('supplier:index')?>">
-                                              <span class="menu-title">Suppliers</span>
-                                          </a>
-                                        </li>
-                                        <li class="nav-item">
-                                          <a class="nav-link" href="<?php echo _route('supply-order:index')?>">
-                                              <span class="menu-title">Supply Orders</span>
-                                          </a>
-                                        </li> -->
-                                        <li class="nav-item">
-                                          <a class="nav-link" href="<?php echo _route('category:index')?>">
-                                              <span class="menu-title">Categories</span>
-                                          </a>
-                                        </li>
-                                    </ul>
-                                </div>
-                            </li>
-                            <?php endif?>
-
-                            <?php if(isEqual($auth->user_type, ['admin'])) :?>
-                            <li class="nav-item">
-                                <a href="/ReportController/create" class="nav-link">
-                                    <i class="link-icon" data-feather="hash"></i>
-                                    <span class="menu-title">Reports</span></a>
-                            </li>
-                            <?php endif?>
-                        </ul>
-                    </div>
-                </nav>
-            <?php endif?>
         </div>
         <!-- partial -->
     

@@ -1,8 +1,7 @@
 <?php
 	use Form\AttachmentForm;
-	use Form\FormCommon;
 
-	load(['AttachmentForm','FormCommon'] , APPROOT.DS.'form');
+	load(['AttachmentForm'] , APPROOT.DS.'form');
 	class Controller
 	{	
 

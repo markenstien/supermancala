@@ -75,6 +75,11 @@
 	{
 		$mailer = MailMaker::getInstance();
 
+		if(SYSTEM_MODE == 'local') {
+			echo $body;
+			die();
+		}
+		
 		$mailer->setSubject($subject)
 		->setBody($body);
 

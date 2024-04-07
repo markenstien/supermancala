@@ -243,5 +243,7 @@
 		'checkout' => 'checkout'
 	]);
 
+	_routeInstance('game', 'GameController', $routes);
+
 	return $routes;
 ?>

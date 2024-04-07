@@ -7,10 +7,20 @@
 
 		<div class="card-body">
 			<?php Flash::show()?>
-			<?php echo $user_form->start()?>
-			<?php echo $user_form->getFormItems()?>
+			<?php echo $form->start()?>
+				<div class="form-group">
+					<?php __($form->getRow('firstname')) ?>
+				</div>
+
+				<div class="form-group">
+					<?php __($form->getRow('lastname')) ?>
+				</div>
+
+				<div class="form-group">
+					<?php __($form->getRow('password')) ?>
+				</div>
 				<input type="submit" name="" class="btn btn-primary btn-sm" value="Edit User">
-			<?php echo $user_form->end()?>
+			<?php echo $form->end()?>
 		</div>
 	</div>
 <?php endbuild()?>

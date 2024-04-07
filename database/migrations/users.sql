@@ -14,9 +14,4 @@ CREATE TABLE `users` (
   `created_at` timestamp DEFAULT now()
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=19 DEFAULT CHARSET=utf8
-
-
-alter table users 
-  add column created_at timestamp DEFAULT now();
-
 alter table users add column profile text;

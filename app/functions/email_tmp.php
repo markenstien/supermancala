@@ -4,7 +4,7 @@
 
     function wEmailHeader()
     {
-        $logo = _path_upload_get('cadaceous_logo.png');
+        $logo = _path_upload_get('pebbles/peb_3.png');
 
         $COMPANY_NAME = COMPANY_NAME;
 
@@ -22,7 +22,7 @@
     
     function wEmailFooter()
     {
-        $logo = _path_upload_get('cadaceous_logo.png');
+        $logo = _path_upload_get('pebbles/peb_3.png');
 
         $COMPANY_NAME = COMPANY_NAME;
 
