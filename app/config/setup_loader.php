@@ -62,9 +62,9 @@
             define('URL' , 'https://sungkaonline.fun');
             define('DBVENDOR' , 'mysql');
             define('DBHOST' , 'localhost');
-            define('DBUSER' , '');
-            define('DBPASS' , '');
-            define('DBNAME' , '');
+            define('DBUSER' , 'th_main');
+            define('DBPASS' , '8PAKrq-zqPnU');
+            define('DBNAME' , 'korpzpru_mancala');
 
             define('BASECONTROLLER' , 'GameController');
             define('BASEMETHOD' , 'index');
