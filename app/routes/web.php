@@ -243,7 +243,10 @@
 		'checkout' => 'checkout'
 	]);
 
-	_routeInstance('game', 'GameController', $routes);
+	_routeInstance('game', 'GameController', $routes, [
+		'catalog' => 'catalog',
+		'play'    => 'play'
+	]);
 
 	return $routes;
 ?>

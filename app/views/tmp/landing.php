@@ -1,194 +1,357 @@
 <!DOCTYPE html>
 <html lang="en">
+   <head>
+      <!-- basic -->
+      <meta charset="utf-8">
+      <meta http-equiv="X-UA-Compatible" content="IE=edge">
+      <!-- mobile metas -->
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+      <meta name="viewport" content="initial-scale=1, maximum-scale=1">
+      <!-- site metas -->
+      <title>nolo</title>
+      <meta name="keywords" content="">
+      <meta name="description" content="">
+      <meta name="author" content="">
+      <!-- bootstrap css -->
+      <link rel="stylesheet" href="<?php echo _path_tmp('landing-tmp/css/bootstrap.min.css')?>">
+      <!-- style css -->
+      <link rel="stylesheet" href="<?php echo _path_tmp('landing-tmp/css/style.css')?>">
+      <!-- Responsive-->
+      <link rel="stylesheet" href="<?php echo _path_tmp('landing-tmp/css/responsive.css')?>">
+      <!-- fevicon -->
+      <link rel="icon" href="<?php echo _path_tmp('landing-tmp/images/fevicon.png')?>" type="image/gif" />
+      <!-- Scrollbar Custom CSS -->
+      <link rel="stylesheet" href="<?php echo _path_tmp('landing-tmp/css/jquery.mCustomScrollbar.min.css')?>">
+      <!-- Tweaks for older IEs-->
+      <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css">
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.5/jquery.fancybox.min.css" media="screen">
+      <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script><![endif]-->
+   </head>
+   <!-- body -->
+   <body class="main-layout">
+      <!-- loader  -->
+      <div class="loader_bg" style="display: none;">
+         <div class="loader"><img src="images/loading.gif" alt="#" /></div>
+      </div>
+      <!-- end loader -->
 
-<head>
-    <title><?php echo $page['metaTitle'] ?? COMPANY_NAME?></title>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-
-    <link rel="apple-touch-icon" href="<?php echo _path_tmp('landing-tmp/assets/img/apple-icon.png')?>">
-    <link rel="shortcut icon" type="image/x-icon" href="<?php echo _path_tmp('main-tmp/assets/img/favicon.ico')?>">
-
-    <link rel="stylesheet" href="<?php echo _path_tmp('landing-tmp/assets/css/bootstrap.min.css')?>">
-    <link rel="stylesheet" href="<?php echo _path_tmp('landing-tmp/assets/css/templatemo.css')?>">
-    <link rel="stylesheet" href="<?php echo _path_tmp('landing-tmp/assets/css/custom.css')?>">
-
-    <!-- Load fonts style after rendering the layout styles -->
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;200;300;400;500;700;900&display=swap">
-    <link rel="stylesheet" href="<?php echo _path_tmp('landing-tmp/assets/css/fontawesome.min.css')?>">
-    <?php produce('headers')?>
-    <?php produce('styles')?>
-</head>
-
-<body>
-    <!-- Start Top Nav -->
-    <nav class="navbar navbar-expand-lg bg-dark navbar-light d-none d-lg-block" id="templatemo_nav_top">
-        <div class="container text-light">
-            <div class="w-100 d-flex justify-content-between">
-                <div>
-                    <i class="fa fa-envelope mx-2"></i>
-                    <a class="navbar-sm-brand text-light text-decoration-none" href="mailto:<?php echo COMPANY_EMAIL?>"><?php echo COMPANY_EMAIL?></a>
-                    <i class="fa fa-phone mx-2"></i>
-                    <a class="navbar-sm-brand text-light text-decoration-none" href="tel:<?php echo COMPANY_TEL?>"><?php echo COMPANY_TEL?></a>
-                </div>
-            </div>
-        </div>
-    </nav>
-    <!-- Close Top Nav -->
-
-
-    <!-- Header -->
-    <nav class="navbar navbar-expand-lg navbar-light shadow">
-        <div class="container d-flex justify-content-between align-items-center">
-
-            <a class="navbar-brand text-success logo h1 align-self-center" href="<?php echo _route('home:index')?>">
-            <?php echo COMPANY_NAME_ABBR?>
-            </a>
-
-            <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#templatemo_main_nav" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-
-            <div class="align-self-center collapse navbar-collapse flex-fill  d-lg-flex justify-content-lg-between" id="templatemo_main_nav">
-                <div class="flex-fill">
-                    <ul class="nav navbar-nav d-flex justify-content-between mx-lg-auto">
-                        <li class="nav-item">
-                            <a class="nav-link" href="<?php echo _route('home:index')?>">Home</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="<?php echo _route('home:shop')?>">Shop</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="<?php echo _route('home:track-order')?>">Order Tracking</a>
-                        </li>
-                    </ul>
-                </div>
-                <div class="navbar align-self-center d-flex">
-                    <div class="d-lg-none flex-sm-fill mt-3 mb-4 col-7 col-sm-auto pr-3">
-                        <div class="input-group">
-                            <input type="text" class="form-control" id="inputMobileSearch" placeholder="Search ...">
-                            <div class="input-group-text">
-                                <i class="fa fa-fw fa-search"></i>
+      <!-- header -->
+    <header>
+            <!-- header inner -->
+        <div class="header-top">
+            <div class="header">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-xl-3 col-lg-3 col-md-3 col-sm-3 col logo_section">
+                        <div class="full">
+                            <div class="center-desk">
+                                <div class="logo">
+                                    <a href="index.html"><img src="images/logo.png" alt="#" /></a>
+                                </div>
                             </div>
                         </div>
+                        </div>
+                        <div class="col-xl-9 col-lg-9 col-md-9 col-sm-9">
+                        <div class="menu-area">
+                            <div class="limit-box">
+                                <nav class="main-menu">
+                                    <ul class="menu-area-main">
+                                    <li class="active"> <a href="index.html">Home</a> </li>
+                                    <li> <a href="#about">About</a> </li>
+                                    <li> <a href="<?php echo _route('game:catalog')?>">Games</a> </li>
+                                    <li> <a href="#Our_Our">Our News</a> </li>
+                                    <li> <a href="#booknow">Contact us</a> </li>
+                                    </ul>
+                                </nav>
+                            </div>
+                        </div>
+                        </div>
                     </div>
-                    <a class="nav-icon d-none d-lg-inline" href="#" data-bs-toggle="modal" data-bs-target="#templatemo_search">
-                        <i class="fa fa-fw fa-search text-dark mr-2"></i>
-                    </a>
-                    <a class="nav-icon position-relative text-decoration-none" href="<?php echo _route('cart:index')?>">
-                        <i class="fa fa-fw fa-cart-arrow-down text-dark mr-1"></i>
-                        <!-- <span class="position-absolute top-0 left-100 translate-middle badge rounded-pill bg-light text-dark">7</span> -->
-                    </a>
-                    <?php if(empty(whoIs())) :?>
-                        <a class="nav-icon position-relative text-decoration-none" href="<?php echo _route('auth:login')?>">
-                            <i class="fa fa-fw fa-user text-dark mr-3"></i>
-                            <span class="position-absolute top-0 left-100 translate-middle badge rounded-pill bg-light text-dark"></span>
-                        </a>
-                    <?php else:?>
-                        <a class="nav-icon position-relative text-decoration-none" href="<?php echo _route('dashboard:index')?>">
-                            <i class="fa fa-fw fa-user text-dark mr-3"></i>
-                            <span class="position-absolute top-0 left-100 translate-middle badge rounded-pill bg-light text-dark"></span>
-                        </a>
-                    <?php endif?>
                 </div>
             </div>
         </div>
-    </nav>
-    <?php if(!empty(whoIs())) :?>
-        <div class="container">
-            <p>Currently Logged in : <?php echo wLinkDefault(_route('user:show', whoIs('id')), whoIs(['firstname','lastname']))?></p>
-        </div>
-    <?php endif?>
-    
-    <!-- Close Header -->
+    </header>
 
-    <!-- Modal -->
-    <div class="modal fade bg-white" id="templatemo_search" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog modal-lg" role="document">
-            <div class="w-100 pt-1 mb-5 text-right">
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <form action="<?php echo _route('home:shop')?>" method="get" class="modal-content modal-body border-0 p-0">
-                <div class="input-group mb-2">
-                    <input type="text" class="form-control" id="inputModalSearch" name="q" placeholder="Search ...">
-                    <button type="submit" class="input-group-text bg-success text-light">
-                        <i class="fa fa-fw fa-search text-white"></i>
-                    </button>
+    <header style="display: none;">
+        <div class="header-top">
+            <section class="slider_section">
+                <div id="myCarousel" class="carousel slide banner_main" data-ride="carousel">
+                    <ol class="carousel-indicators">
+                        <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+                        <li data-target="#myCarousel" data-slide-to="1"></li>
+                        <li data-target="#myCarousel" data-slide-to="2"></li>
+                    </ol>
+                    <div class="carousel-inner">
+                        <div class="carousel-item active">
+                        
+                        <div class="container">
+                            <div class="carousel-caption">
+                                <div class="row d_flex">
+                                    <div class="col-md-4">
+                                    <div class="text-bg">
+                                        <h1>Online casino </h1>
+                                        <a href="#">Play now</a>
+                                    </div>
+                                    </div>
+                                    <div class="col-md-8">
+                                    <div class="text-img">
+                                        <figure><img src="images/img.png" /></figure>
+                                    </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        </div>
+                        <div class="carousel-item">
+                        
+                        <div class="container">
+                            <div class="carousel-caption">
+                                <div class="row d_flex">
+                                    <div class="col-md-4">
+                                    <div class="text-bg">
+                                        <h1>Online casino </h1>
+                                        <a href="#">Play now</a>
+                                    </div>
+                                    </div>
+                                    <div class="col-md-8">
+                                    <div class="text-img">
+                                        <figure><img src="images/img.png" /></figure>
+                                    </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        </div>
+                        <div class="carousel-item">
+                        
+                        <div class="container">
+                            <div class="carousel-caption">
+                                <div class="row d_flex">
+                                    <div class="col-md-4">
+                                    <div class="text-bg">
+                                        <h1>Online casino </h1>
+                                        <a href="#">Play now</a>
+                                    </div>
+                                    </div>
+                                    <div class="col-md-8">
+                                    <div class="text-img">
+                                        <figure><img src="images/img.png" /></figure>
+                                    </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        </div>
+                    </div>
+                    <a class="carousel-control-prev" href="#myCarousel" role="button" data-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    <span class="sr-only">Previous</span>
+                    </a>
+                    <a class="carousel-control-next" href="#myCarousel" role="button" data-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    <span class="sr-only">Next</span>
+                    </a>
                 </div>
-            </form>
+            </section>
         </div>
-    </div>
-    <?php produce('content') ?>
-    <!-- Start Footer -->
-    <footer class="bg-dark" id="tempaltemo_footer">
-        <div class="container">
+    </header>
+	<!-- about  -->
+	
+
+
+      <?php produce('content')?>
+     
+      <div id="about" class="about" style="display: none;">
+         <div class="container">
             <div class="row">
-
-                <div class="col-md-4 pt-5">
-                    <h2 class="h2 text-success border-bottom pb-3 border-light logo"><?php echo COMPANY_NAME?></h2>
-                    <ul class="list-unstyled text-light footer-link-list">
-                        <li>
-                            <i class="fas fa-map-marker-alt fa-fw"></i>
-                            <?php echo COMPANY_ADDRESS?>
-                        </li>
-                        <li>
-                            <i class="fa fa-phone fa-fw"></i>
-                            <a class="text-decoration-none" href="tel:<?php echo COMPANY_TEL?>"><?php echo COMPANY_TEL?></a>
-                        </li>
-                        <li>
-                            <i class="fa fa-envelope fa-fw"></i>
-                            <a class="text-decoration-none" href="mailto:<?php echo COMPANY_EMAIL?>"><?php echo COMPANY_EMAIL?></a>
-                        </li>
-                    </ul>
-                </div>
-
-                <div class="col-md-4 pt-5">
-                    <h2 class="h2 text-light border-bottom pb-3 border-light">Brands</h2>
-                    <ul class="list-unstyled text-light footer-link-list">
-                        <?php foreach(wBrands() as $key => $row) :?>
-                            <li><a class="text-decoration-none" href="<?php echo _route('home:shop',[
-                                'q' => $row
-                            ])?>"><?php echo $row?></a></li>
-                        <?php endforeach?>
-                    </ul>
-                </div>
-
-                <div class="col-md-4 pt-5">
-                    <h2 class="h2 text-light border-bottom pb-3 border-light">Further Info</h2>
-                    <ul class="list-unstyled text-light footer-link-list">
-                        <li><a class="text-decoration-none" href="<?php echo _route('home:index')?>">Home</a></li>
-                        <li><a class="text-decoration-none" href="<?php echo _route('home:about')?>">About Us</a></li>
-                        <li><a class="text-decoration-none" href="<?php echo _route('home:contact')?>">Contact</a></li>
-                    </ul>
-                </div>
-
+               <div class="col-md-12">
+                  <div class="titlepage">
+                     <h2>About <strong class="white black"> Us</strong></h2>
+                     <p>It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. </p>
+                  </div>
+               </div>
             </div>
-        </div>
-
-        <div class="w-100 bg-black py-3">
+            <div class="row">
+               <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12">
+                  <div class="about-box">
+                     <figure><img src="images/about1.jpg" alt="#" /></figure>
+                     <h3> Basic and Tips</h3>
+                     <p>It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it</p>
+                  </div>
+                  <a class="read_more" href="#">Read More</a>
+               </div>
+               <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12">
+                  <div class="about-box">
+                     <figure><img src="images/about2.jpg" alt="#" /></figure>
+                     <h3> Casinos and Chips</h3>
+                     <p>It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it</p>
+                  </div>
+                  <a class="read_more" href="#">Read More</a>
+               </div>
+            </div>
+         </div>
+      </div>
+      <!-- end abouts -->
+      <!-- Features -->
+      <div id="games" class="Features">
+         <div class="container">
+            <div class="row d_flex">
+               <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 ">
+                  <div class="titlepage">
+                     <h2>Features<br><strong class="white"> Games</strong></h2>
+                     <p>It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less </p>
+                     <a href="#">View All</a>
+                  </div>
+               </div>
+               <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 ">
+                  <div class="row">
+                     <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 pa_bottom">
+                        <div class="games-box">
+                           <figure><img src="images/game1.png" alt="#" /></figure>
+                        </div>
+                     </div>
+                     <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 pa_bottom">
+                        <div class="games-box">
+                           <figure><img src="images/game2.png" alt="#" /></figure>
+                        </div>
+                     </div>
+                     <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 ">
+                        <div class="games-box">
+                           <figure><img src="images/game3.png" alt="#" /></figure>
+                        </div>
+                     </div>
+                     <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 ">
+                        <div class="games-box">
+                           <figure><img src="images/game4.png" alt="#" /></figure>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+            </div>
+         </div>
+      </div>
+ 
+      <!-- end Features -->
+      <!-- We are -->
+      <div id="Our_Our" class="Our">
+         <div class="container">
+            <div class="row">
+               <div class="col-md-2">
+                  <div class="titlepage">
+                     <h2>Our <br><strong class="white black"> news</strong></h2>
+                  </div>
+               </div>
+               <div class="col-md-10">
+                  <div class="titlepage">
+                     <span>It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less </span>
+                  </div>
+               </div>
+            </div>
+            <div class="row">
+               <div class="col-md-12">
+                  <div id="main_slider" class="carousel slide banner-main2" data-ride="carousel">
+                     <div class="carousel-inner">
+                        <div class="carousel-item active">
+                           <img class="first-slide" src="images/banner.png" alt="First slide">
+                        </div>
+                        <div class="carousel-item">
+                           <img class="second-slide" src="images/banner.png" alt="Second slide">
+                        </div>
+                        <div class="carousel-item">
+                           <img class="third-slide" src="images/banner.png" alt="Third slide">
+                        </div>
+                     </div>
+                     <a class="carousel-control-prev" href="#main_slider" role="button" data-slide="prev"> <i class='fa fa-angle-left'></i></a>
+                     <a class="carousel-control-next" href="#main_slider" role="button" data-slide="next"> <i class='fa fa-angle-right'></i></a>
+                  </div>
+                  <p class="new_s">It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less </p>
+               </div>
+            </div>
+         </div>
+      </div>
+      <!-- end We are -->
+      <!-- contact -->
+      <div id="booknow" class="contact">
+         <div class="container-fluid">
+            <div class="row">
+               <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 padding-right1">
+                  <div class="rable-box">
+                     <figure>
+                     <img src="images/cac.png" alt="#"/>
+                  </div>
+               </div>
+               <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 padding-left1">
+                  <div class="contact">
+                     <div class="titlepage">
+                        <h2>Book <br><strong class="white "> Now</strong></h2>
+                     </div>
+                     <form class="book_now">
+                        <div class="row">
+                           <div class="col-sm-12">
+                              <input class="contactus" placeholder="Name" type="text" name="Name">
+                           </div>
+                           <div class="col-sm-12">
+                              <input class="contactus" placeholder="Phone Number" type="text" name="Phone Number">
+                           </div>
+                           <div class="col-sm-12">
+                              <input class="contactus" placeholder="Email" type="text" name="Email">
+                           </div>
+                           <div class="col-sm-12">
+                              <select name="cars">
+                                 <option value="volvo" selected> Select Game</option>
+                                 <option value="saab">1</option>
+                                 <option value="fiat" >2</option>
+                                 <option value="audi">3</option>
+                              </select>
+                           </div>
+                           <div class="col-sm-12">
+                              <textarea class="textarea" placeholder="Message" type="text" name="Message"></textarea>
+                           </div>
+                           <div class="col-sm-12">
+                              <button class="send">Send</button>
+                           </div>
+                        </div>
+                     </form>
+                  </div>
+               </div>
+            </div>
+         </div>
+      </div>
+ 
+      <!-- end contact -->
+      <!-- end clients -->
+      <!-- map -->
+      <div class="map">
+         <figure><img src="images/map.jpg" alt="#"/></figure>
+      </div>
+      <!-- end map -->
+      <!--  footer -->
+      <footer>
+         <div class="footer">
             <div class="container">
-                <div class="row pt-2">
-                    <div class="col-12">
-                        <p class="text-left text-light">
-                            Copyright &copy; <?php echo date('Y')?> <?php echo COMPANY_NAME_ABBR?>
-                        </p>
-                    </div>
-                </div>
+               <div class="row">
+                  <div class="col-md-12">
+                     <div class="copyright">
+                        <p>© 2019 All Rights Reserved. <a href="https://html.design/">Free html Templates</a></p>
+                     </div>
+                  </div>
+               </div>
             </div>
-        </div>
-
-    </footer>
-    <!-- End Footer -->
-
-    <!-- Start Script -->
-    <script src="<?php echo _path_tmp('landing-tmp/assets/js/jquery-1.11.0.min.js')?>"></script>
-    <script src="<?php echo _path_tmp('landing-tmp/assets/js/jquery-migrate-1.2.1.min.js')?>"></script>
-    <script src="<?php echo _path_tmp('landing-tmp/assets/js/bootstrap.bundle.min.js')?>"></script>
-    <script src="<?php echo _path_tmp('landing-tmp/assets/js/templatemo.js')?>"></script>
-    <script src="<?php echo _path_tmp('landing-tmp/assets/js/custom.js')?>"></script>
-    <!-- End Script -->
-
-    <?php produce('scripts') ?>
-</body>
-
+         </div>
+      </footer>
+      <!-- end footer -->
+      <!-- Javascript files-->
+      <script src="<?php echo _path_tmp('landing-tmp/js/jquery.min.js')?>"></script>
+      <script src="<?php echo _path_tmp('landing-tmp/js/popper.min.js')?>"></script>
+      <script src="<?php echo _path_tmp('landing-tmp/js/bootstrap.bundle.min.js')?>"></script>
+      <script src="<?php echo _path_tmp('landing-tmp/js/jquery-3.0.0.min.js')?>"></script>
+      <script src="<?php echo _path_tmp('landing-tmp/js/plugin.js')?>"></script>
+      <!-- sidebar -->
+      <script src="j<?php echo _path_tmp('landing-tmp/js/jquery.mCustomScrollbar.concat.min.js')?>"></script>
+      <script src="<?php echo _path_tmp('landing-tmp/js/custom.js')?>"></script>
+      <script src="https:cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.5/jquery.fancybox.min.js"></script>
+      
+   </body>
 </html>

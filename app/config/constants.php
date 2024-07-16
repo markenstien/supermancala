@@ -50,4 +50,42 @@
 
     define('APP_KEY' , 'Medicad-5175140471');
     
+
+    const GAMES = [
+        [
+            'id' => '1',
+            'code'=> 'tetris',
+            'title' => 'World Tetris',
+            'description' => 'Tetris is a puzzle video game created in 1985 by Alexey Pajitnov,
+                 a Soviet software engineer. It has been published by several companies on more than 65 platforms,
+                  setting a Guinness world record for the most ported game',
+            'path' => 'tetris/game.php',
+            'wallpaper' => '',
+            'profile_icon' => 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSIrZsLtNlwL7KXGY6lMPS8IJtyf-r2e01Pbw&s'
+        ],
+
+        [
+            'id' => '2',
+            'code'=> 'horse racing',
+            'title' => 'Horse Racing',
+            'description' => 'Tetris is a puzzle video game created in 1985 by Alexey Pajitnov,
+                 a Soviet software engineer. It has been published by several companies on more than 65 platforms,
+                  setting a Guinness world record for the most ported game',
+            'path' => 'horsegame/game.php',
+            'wallpaper' => '',
+            'profile_icon' => 'https://static.keygames.com/2/112462/90340/1024x1024/horse-racing-online.webp'
+        ],
+
+        [
+            'id' => '3',
+            'code'=> 'lucky9',
+            'title' => 'Lucky 9',
+            'description' => 'Tetris is a puzzle video game created in 1985 by Alexey Pajitnov,
+                 a Soviet software engineer. It has been published by several companies on more than 65 platforms,
+                  setting a Guinness world record for the most ported game',
+            'path' => 'lucky9/game.php',
+            'wallpaper' => '',
+            'profile_icon' => 'https://play-lh.googleusercontent.com/nNwUkwaAiyYKMcTAw6-i7Il9j0Xijzw2LQwvUfUDzf1msPxAeJ_f3_YoWOHxO3y4CA'
+        ]
+    ];
 ?>

@@ -49,6 +49,7 @@ $( document ).ready(function()
 
 		$temp.remove();
 	}
+	
 	function copyToClipboard(element) 
 	{
 		var $temp = $("<input>");

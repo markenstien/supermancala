@@ -1,5 +1,8 @@
 <?php
 
+    function _path_view($args) {
+        
+    }
     function _path_public($args)
     {
         return PATH_PUBLIC.DS.$args;
