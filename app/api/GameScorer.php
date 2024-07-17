@@ -17,8 +17,7 @@
 
             if(!empty($req['game_id']) && !empty($req['score'])) {
                 //insert
-                // $userId = whoIs('id');
-                $userId = 2;
+                $userId = whoIs('id');
                 $gameId = $req['game_id'];
                 $score = $req['score'];
                 $this->gameScorerService->addScore($userId, $gameId, $score);
