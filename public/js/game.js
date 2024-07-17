@@ -1,3 +1,9 @@
+const GAMES = {
+    horseracing : 1,
+    tetris : 2,
+    lucky9 : 3,
+    hoops : 4,
+}
 function gameScoreSave(gameId, score) {
     $.ajax({
         url : getURL('api/GameScorer/addScore'),
@@ -7,7 +13,12 @@ function gameScoreSave(gameId, score) {
         },
         success : function(response) {
             console.log(response);
-        }
-    })
+        },
 
+        error : function(response) {
+            console.log(response);
+        }
+    });
+
+    console.log('game score saved');
 }

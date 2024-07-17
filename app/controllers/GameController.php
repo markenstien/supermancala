@@ -1,7 +1,18 @@
-<?php 
+<?php
+	use Services\GameScorerService;
+	load(['GameScorerService'], SERVICES);
 
 	class GameController extends Controller
 	{
+		public $gameScoreService, $userId;
+
+		public function __construct()
+		{
+			parent::__construct();
+			$this->gameScoreService = new GameScorerService();
+
+			$this->userId = whoIs('id');
+		}
 		/**
 		 *Mancalaboard 
 		 */
@@ -38,13 +49,21 @@
 			return $retVal;
 		}
 		public function play() {
+			if(!whoIs()) {
+				return redirect(_route('game:catalog'));
+			}
 			$req = request()->inputs();
 			$game = $req['code'] ?? 'tetris';
-
+			$gameId = $req['id'];
 			$gameData = $this->extractGameById($req['id']);
-			
-			$gamePath = '';
 			$data = [];
+
+			$gameScoreDetails = [
+				'lastPlayedScore' => $this->gameScoreService->getRecentScore($this->userId, $gameId),
+				'highestScore' => $this->gameScoreService->getHighestScore($this->userId, $gameId),
+				'leaderboards' => $this->gameScoreService->getGameLeaderBoard($this->userId, $gameId)
+			];
+
 			switch($game) {
 				case 'tetris':
 					/**
@@ -53,7 +72,7 @@
 					$gamePath = 'game/tetris/game';
 				break;
 
-				case 'horse racing':
+				case 'horseracing':
 					/**
 					 * create point per clear
 					 * add score board
@@ -86,7 +105,12 @@
 					return $this->view('game/tetris');
 				break;
 			}
-			return $this->view($gamePath, $data);
+
+			$data['game'] = $game;	
+			$data['gameData'] = $gameData;
+			$data['gameScoreDetails'] = $gameScoreDetails;
+			
+			return $this->view('game/play', $data);
 		}
 
 		public function gameIndex() {

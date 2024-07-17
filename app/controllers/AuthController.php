@@ -36,7 +36,7 @@
 					Flash::set( "Welcome Back !" . auth('firstname'));
 				}
 				
-				return redirect(_route('game:index'));
+				return redirect(_route('game:catalog'));
 			}
 
 			if(!empty(whoIs())) {

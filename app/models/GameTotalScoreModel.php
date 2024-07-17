@@ -28,4 +28,24 @@
                 ]);
             }
         }
+
+        public function getAll($params = []) {
+            $where = null;
+            if(!empty($params['where'])) {
+                $where = " WHERE " . parent::conditionConvert($params['where']);
+            }
+            
+            $this->db->query(
+                "SELECT game_total_scores.*,
+                    concat(firstname, ' ', lastname) as fullname,
+                    username
+                    FROM game_total_scores
+                        LEFT JOIN users as user 
+                        ON user.id = game_total_scores.user_id
+                    {$where}
+                    ORDER BY game_score_total desc"
+            );
+                    
+            return $this->db->resultSet();
+        }
     }

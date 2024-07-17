@@ -1,1 +1,0 @@
-<iframe src="<?php echo GET_PATH_RESOURCE.DS.'games/horsegame/main.php'?>" frameborder="0"></iframe>

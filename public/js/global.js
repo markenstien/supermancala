@@ -1,5 +1,9 @@
 $( document ).ready(function() 
 {
+	function callMe() {
+		alert('testicles');
+	}
+	
 	if( $('.form-verify') )
 	{
 		$('.form-verify').click(function(evt) {

@@ -1,17 +1,14 @@
-<!--
-Assignment: Javascript Assignment
-Filename: game.html
-@author: KITSANTAS FOTIOS (17421808)
-Date: 30/04/17
--->
-
 <!DOCTYPE html>
 <html>
     <head>
         <meta charset="utf-8">
         <title>Horse Racing</title>
         <link rel="stylesheet" href="game.css" />
-        <script src="game.js"></script>
+        <script src="../../../js/core.js"></script>
+        <script src="../../../js/jquery.js"></script>
+        <script src="../../../js/global.js"></script>
+        <script src="../../../js/game.js"></script>
+        <script src="game.js" defer></script>
     </head>
 
     <body>

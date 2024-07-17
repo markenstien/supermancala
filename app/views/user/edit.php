@@ -8,12 +8,25 @@
 		<div class="card-body">
 			<?php Flash::show()?>
 			<?php echo $form->start()?>
+
+				<div class="form-group">
+					<?php __($form->getRow('username')) ?>
+				</div>
+
 				<div class="form-group">
 					<?php __($form->getRow('firstname')) ?>
 				</div>
 
 				<div class="form-group">
 					<?php __($form->getRow('lastname')) ?>
+				</div>
+
+				<div class="form-group">
+					<?php __($form->getRow('email', [
+						'attributes' => [
+							'disabled' => true
+						]
+					])) ?>
 				</div>
 
 				<div class="form-group">

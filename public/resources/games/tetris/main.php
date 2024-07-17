@@ -12,22 +12,64 @@
   body {
     background: black;
     display: flex;
-    align-items: center;
-    justify-content: center;
+    align-items: top;
+    justify-content: left;
   }
 
   canvas {
     border: 1px solid white;
   }
+
+  .controls{
+    text-align: left;
+    background-color: #fff;
+    padding: 20px;
+  }
+  .controls ul li {
+    list-style: none;
+    font-size: 13pt;
+    margin-bottom: 25px;
+  }
+
+  .controls ul li a {
+    text-decoration: none;
+    border: 1px solid red;
+    padding: 10px;
+    display: block;
+    width: 75px;
+  }
   </style>
 </head>
 <body>
-<canvas width="320" height="640" id="game"></canvas>
-<script>
+  <div class="controls">
+    <ul>
+      <li><a href="javascript:void(null)" id="play">Play</a></li>
+      <li><a href="javascript:void(null)" id="stop">Stop</a></li>
+      <li>
+        <a href="javascript:void(null)">
+          <p>Score</p>
+          <div id="score">0</div>
+        </a>
+      </li>
+      <li>
+        <a href="javascript:void(null)">
+          <p>Rows</p>
+          <div id="tetronimoCleared"></div>
+        </a>
+      </li>
+    </ul>
+  </div>
+  <canvas width="320" height="640" id="game"></canvas>
+  <script src="../../../js/core.js"></script>
+  <script src="../../../js/jquery.js"></script>
+  <script src="../../../js/global.js"></script>
+  <script src="../../../js/game.js"></script>
+<script defer>
 /**scoreboard */
 
 let modification = {
-  score : 0
+  score : 0,
+  tetronimoCleared :0
 };
 // https://tetris.fandom.com/wiki/Tetris_Guideline
 
@@ -108,6 +150,8 @@ function isValidMove(matrix, cellRow, cellCol) {
 
 // place the tetromino on the playfield
 function placeTetromino() {
+  let totalPoints = 0;
+  let totalTetronimoCleared = 0;
   for (let row = 0; row < tetromino.matrix.length; row++) {
     for (let col = 0; col < tetromino.matrix[row].length; col++) {
       if (tetromino.matrix[row][col]) {
@@ -125,21 +169,40 @@ function placeTetromino() {
   // check for line clears starting from the bottom and working our way up
   for (let row = playfield.length - 1; row >= 0; ) {
     if (playfield[row].every(cell => !!cell)) {
+      let pointsEarned = 0;
 
       // drop every row above this one
       for (let r = row; r >= 0; r--) {
         for (let c = 0; c < playfield[r].length; c++) {
           playfield[r][c] = playfield[r-1][c];
         }
-        modification['score']++;
+        pointsEarned++;
+        totalTetronimoCleared++;
       }
+      if(pointsEarned >= 0) {
+        pointsEarned = pointsEarned / 15;
+          if(pointsEarned > 3) {
+            //bonus
+            totalPoints += pointsEarned;
+          } else {
+            totalPoints += (pointsEarned) + ((pointsEarned) * .74);
+          }
+      }
+      //create bonus 
+      modification['score'] += totalPoints;
+      modification['tetronimoCleared'] += (totalTetronimoCleared / 15);
     }
     else {
       row--;
     }
   }
-  console.log('score : ' + modification['score'])
+  updateScore();
   tetromino = getNextTetromino();
+}
+
+function updateScore() {
+  document.getElementById('score').innerHTML = Math.round(parseFloat(modification['score']));
+  document.getElementById('tetronimoCleared').innerHTML = Math.round(parseFloat(modification['tetronimoCleared']));
 }
 
 // show the game over screen
@@ -157,6 +220,8 @@ function showGameOver() {
   context.textAlign = 'center';
   context.textBaseline = 'middle';
   context.fillText('GAME OVER!', canvas.width / 2, canvas.height / 2);
+
+  gameScoreSave(2, modification['score']);
 }
 
 const canvas = document.getElementById('game');
@@ -319,7 +384,17 @@ document.addEventListener('keydown', function(e) {
 });
 
 // start the game
-rAF = requestAnimationFrame(loop);
+
+document.getElementById('play').addEventListener('click', function(){
+  rAF = requestAnimationFrame(loop);
+});
+
+document.getElementById('stop').addEventListener('click', function(){
+  showGameOver();
+});
+
+
+
 </script>
 </body>
 </html>

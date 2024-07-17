@@ -1,5 +1,8 @@
-const URL = 'https://sungkaonline.fun';
+// const URL = 'https://sungkaonline.fun';
+const URL = 'http://dev.mancala';
 const DS  = '/';
+
+
 
 const getURL = function(called_url = null){
 

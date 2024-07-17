@@ -4,7 +4,6 @@ Filename: game.js
 @author: KITSANTAS FOTIOS (17421808)
 Date: 30/04/17
 */
-
 /*Create a Javascript Object for a horse with 3 parameters: HTML ID, position x and y*/
 function Horse(id, x, y){
 	this.element = document.getElementById(id);/*HTML element of the horse*/
@@ -119,6 +118,7 @@ function Horse(id, x, y){
 			}else{
 				funds -= amount;
 			}
+			gameScoreSave(1, funds);
 			document.getElementById('funds').innerText = funds;
 		}else if (results.length == 4){
 			//All horse arrived, enable again the Start Button

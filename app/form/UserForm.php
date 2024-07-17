@@ -26,7 +26,7 @@
 			$this->addEmail();
 			$this->addAddress();
 
-			// $this->addUsername();
+			$this->addUsername();
 			$this->addPassword();
 			$this->addUserType();
 			$this->addProfile();
@@ -156,14 +156,13 @@
 				'type' => 'text',
 				'name' => 'username',
 				'class' => 'form-control',
-				'required' => '',
 				'options' => [
-					'label' => 'Username',
+					'label' => 'Display name',
 				],
 
 				'attributes' => [
 					'id' => 'username',
-					'placeholder' => 'Enter Username'
+					'placeholder' => 'Enter Display Name'
 				]
 			]);
 		}

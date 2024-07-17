@@ -50,14 +50,6 @@
                             <?php echo COMPANY_NAME?>
                         </a>
                         <?php if($auth) :?>
-                            <form class="search-form">
-                                <div class="input-group">
-                                    <div class="input-group-text">
-                                      <i data-feather="search"></i>
-                                    </div>
-                                    <input type="text" class="form-control" id="navbarForm" placeholder="Search here...">
-                                </div>
-                            </form>
                             <ul class="navbar-nav">
                               <li class="nav-item dropdown">
                                 <a class="nav-link dropdown-toggle" href="<?php echo _route('user:show' , $auth->id)?>" 
@@ -79,6 +71,14 @@
                                         <span>Profile</span>
                                       </a>
                                     </li>
+
+                                    <li class="dropdown-item py-2">
+                                      <a href="#" class="text-body ms-0">
+                                        <i class="me-2 icon-md" data-feather="user"></i>
+                                        <span>Games Played</span>
+                                      </a>
+                                    </li>
+
                                     <li class="dropdown-item py-2">
                                       <a href="<?php echo _route('auth:logout')?>" class="text-body ms-0">
                                         <i class="me-2 icon-md" data-feather="log-out"></i>
@@ -102,6 +102,7 @@
         <div class="page-wrapper">
 
             <div class="page-content">
+              <button class="btn btn-primary" onclick="location.href='/GameController/catalog'">Play Games!</button>
                 <?php echo produce('content')?>
             </div>
 

@@ -13,4 +13,18 @@
                 'last_played_dt' => $today
             ]);
         }
+
+        public function getHighest($userId, $gameId) {
+            return parent::single([
+                'user_id' => $userId,
+                'game_id' => $gameId
+            ], '*', 'game_score desc');
+        }
+
+        public function getRecent($userId, $gameId) {
+            return parent::single([
+                'user_id' => $userId,
+                'game_id' => $gameId
+            ], '*', 'id desc');
+        }
     }

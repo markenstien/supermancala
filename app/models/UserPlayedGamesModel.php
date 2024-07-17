@@ -4,7 +4,7 @@
     {
         public $table = 'user_played_games';
 
-        public function add($userId, $gameId) {
+        public function addNew($userId, $gameId) {
             $today = nowMilitary();
             $lastPlayedGame = parent::single([
                 'user_id' => $userId,

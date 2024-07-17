@@ -62,7 +62,7 @@
 	{
         $user = Session::get('auth');
 
-        if(!is_null($prop)){
+        if(!is_null($prop) && !empty($user)){
             if(is_array($prop)) 
             {
                 $str = '';
@@ -83,7 +83,6 @@
                     return $user->$prop;  
             }
 
-                      
         } 
 
         return $user ?? '';

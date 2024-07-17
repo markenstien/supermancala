@@ -8,7 +8,7 @@
       <meta name="viewport" content="width=device-width, initial-scale=1">
       <meta name="viewport" content="initial-scale=1, maximum-scale=1">
       <!-- site metas -->
-      <title>nolo</title>
+      <title>Pinoy Games</title>
       <meta name="keywords" content="">
       <meta name="description" content="">
       <meta name="author" content="">
@@ -28,12 +28,13 @@
       <!--[if lt IE 9]>
       <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
       <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script><![endif]-->
+      <?php produce('style')?>
    </head>
    <!-- body -->
-   <body class="main-layout">
+   <body class="main-layout" id="body">
       <!-- loader  -->
       <div class="loader_bg" style="display: none;">
-         <div class="loader"><img src="images/loading.gif" alt="#" /></div>
+         <div class="loader"><img src="<?php echo _path_tmp('landing-tmp/images/loading.gif')?>" alt="#" /></div>
       </div>
       <!-- end loader -->
 
@@ -48,7 +49,7 @@
                         <div class="full">
                             <div class="center-desk">
                                 <div class="logo">
-                                    <a href="index.html"><img src="images/logo.png" alt="#" /></a>
+                                    <a href="#">PINOY</a>
                                 </div>
                             </div>
                         </div>
@@ -58,11 +59,13 @@
                             <div class="limit-box">
                                 <nav class="main-menu">
                                     <ul class="menu-area-main">
-                                    <li class="active"> <a href="index.html">Home</a> </li>
-                                    <li> <a href="#about">About</a> </li>
                                     <li> <a href="<?php echo _route('game:catalog')?>">Games</a> </li>
-                                    <li> <a href="#Our_Our">Our News</a> </li>
-                                    <li> <a href="#booknow">Contact us</a> </li>
+                                    <?php if(!whoIs()): ?>
+                                       <li> <a href="<?php echo _route('auth:login')?>">Login</a> </li>
+                                       <li> <a href="<?php echo _route('auth:register')?>">Register</a> </li>
+                                       <?php else :?>
+                                          <li> <a href="<?php echo _route('user:profile')?>">Profile</a> </li>
+                                    <?php endif?>
                                     </ul>
                                 </nav>
                             </div>
@@ -195,7 +198,7 @@
       </div>
       <!-- end abouts -->
       <!-- Features -->
-      <div id="games" class="Features">
+      <div id="games" class="Features" style="display: none;">
          <div class="container">
             <div class="row d_flex">
                <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 ">
@@ -235,7 +238,7 @@
  
       <!-- end Features -->
       <!-- We are -->
-      <div id="Our_Our" class="Our">
+      <div id="Our_Our" class="Our" style="display: none;">
          <div class="container">
             <div class="row">
                <div class="col-md-2">
@@ -273,7 +276,7 @@
       </div>
       <!-- end We are -->
       <!-- contact -->
-      <div id="booknow" class="contact">
+      <div id="booknow" class="contact" style="display: none;">
          <div class="container-fluid">
             <div class="row">
                <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 padding-right1">
@@ -334,7 +337,7 @@
                <div class="row">
                   <div class="col-md-12">
                      <div class="copyright">
-                        <p>© 2019 All Rights Reserved. <a href="https://html.design/">Free html Templates</a></p>
+                        <p>© 2019 All Rights Reserved. PINOY GAMES - <?php echo date('Y')?></a></p>
                      </div>
                   </div>
                </div>
@@ -352,6 +355,6 @@
       <script src="j<?php echo _path_tmp('landing-tmp/js/jquery.mCustomScrollbar.concat.min.js')?>"></script>
       <script src="<?php echo _path_tmp('landing-tmp/js/custom.js')?>"></script>
       <script src="https:cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.5/jquery.fancybox.min.js"></script>
-      
+      <?php echo produce('scripts') ?>
    </body>
 </html>

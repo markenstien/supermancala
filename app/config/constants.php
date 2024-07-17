@@ -53,25 +53,23 @@
 
     const GAMES = [
         [
-            'id' => '1',
+            'id' => '2',
             'code'=> 'tetris',
-            'title' => 'World Tetris',
-            'description' => 'Tetris is a puzzle video game created in 1985 by Alexey Pajitnov,
-                 a Soviet software engineer. It has been published by several companies on more than 65 platforms,
-                  setting a Guinness world record for the most ported game',
+            'title' => 'Tetris',
+            'description' => "There are seven shapes composed of four blocks each, and they fall 
+            into the space one at a time at a fixed speed. The player's goal is 
+            to rotate the shapes as they fall to complete solid rows without gaps.",
             'path' => 'tetris/game.php',
             'wallpaper' => '',
             'profile_icon' => 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSIrZsLtNlwL7KXGY6lMPS8IJtyf-r2e01Pbw&s'
         ],
 
         [
-            'id' => '2',
-            'code'=> 'horse racing',
+            'id' => '1',
+            'code'=> 'horseracing',
             'title' => 'Horse Racing',
-            'description' => 'Tetris is a puzzle video game created in 1985 by Alexey Pajitnov,
-                 a Soviet software engineer. It has been published by several companies on more than 65 platforms,
-                  setting a Guinness world record for the most ported game',
-            'path' => 'horsegame/game.php',
+            'description' => "sport of running horses at speed, mainly Thoroughbreds with a rider astride or 
+            Standardbreds with the horse pulling a conveyance with a drive",
             'wallpaper' => '',
             'profile_icon' => 'https://static.keygames.com/2/112462/90340/1024x1024/horse-racing-online.webp'
         ],
@@ -79,13 +77,22 @@
         [
             'id' => '3',
             'code'=> 'lucky9',
-            'title' => 'Lucky 9',
-            'description' => 'Tetris is a puzzle video game created in 1985 by Alexey Pajitnov,
-                 a Soviet software engineer. It has been published by several companies on more than 65 platforms,
-                  setting a Guinness world record for the most ported game',
+            'title' => 'Lucky9',
+            'description' => "The object of the game is to beat the dealer with a higher valued hand as close to 9 as possible. Tens and face cards are worth 0 points, 
+            aces are worth 1 point, and 2-9 are scored at face value.",
             'path' => 'lucky9/game.php',
             'wallpaper' => '',
             'profile_icon' => 'https://play-lh.googleusercontent.com/nNwUkwaAiyYKMcTAw6-i7Il9j0Xijzw2LQwvUfUDzf1msPxAeJ_f3_YoWOHxO3y4CA'
+        ],
+
+        [
+            'id' => '4',
+            'code'=> 'Mancala',
+            'title' => 'Sungka',
+            'description' => " The game is typically played on a long, wooden board that has 9 holes. Each player has seven smaller holes (houses) in front of him and two large holes (head) at each end of the board",
+            'path' => 'sungka/game.php',
+            'wallpaper' => '',
+            'profile_icon' => 'https://live.staticflickr.com/3755/13123111064_e4987c46fc_b.jpg'
         ]
     ];
 ?>

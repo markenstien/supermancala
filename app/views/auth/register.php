@@ -35,4 +35,4 @@
   </div>
 </div>
 <?php endbuild()?>
-<?php loadTo('tmp/basic')?>
+<?php loadTo('tmp/landing')?>
