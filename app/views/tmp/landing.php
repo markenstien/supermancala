@@ -322,15 +322,7 @@
             </div>
          </div>
       </div>
- 
-      <!-- end contact -->
-      <!-- end clients -->
-      <!-- map -->
-      <div class="map">
-         <figure><img src="images/map.jpg" alt="#"/></figure>
-      </div>
-      <!-- end map -->
-      <!--  footer -->
+
       <footer>
          <div class="footer">
             <div class="container">
