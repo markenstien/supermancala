@@ -69,7 +69,7 @@
 					/**
 					 * create point per clear
 					 */
-					$gamePath = 'game/tetris/game';
+					$gamePath = 'game/tetris';
 				break;
 
 				case 'horseracing':
@@ -77,7 +77,7 @@
 					 * create point per clear
 					 * add score board
 					 */
-					$gamePath = 'game/horsegame/game';
+					$gamePath = 'game/lucky9';
 				break;
 
 
@@ -86,7 +86,7 @@
 					 * create point per clear
 					 * create computer player
 					 */
-					$gamePath = 'game/lucky9/game';
+					$gamePath = 'game/lucky9';
 				break;
 
 				case 'hoops':
@@ -94,15 +94,15 @@
 					 * create point per clear
 					 * search new code
 					 */
-					return $this->view('game/tetris');
+					$gamePath = 'game/hoops/game';
 				break;
 
-				case 'pool':
+				case 'snake':
 					/**
 					 * create point per clear
 					 * search project
 					 */
-					return $this->view('game/tetris');
+					$gamePath = 'game/snake';
 				break;
 			}
 
