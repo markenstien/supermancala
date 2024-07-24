@@ -60,11 +60,3 @@
 
         return $path.'/'.$args;
     }
-
-
-    // function _path_tmp($args)
-    // {
-    //      if(is_null($args))
-    //         return PATH_TMP;
-    //     return PATH_TMP.DS.$args;
-    // }
