@@ -93,6 +93,28 @@
             'path' => 'sungka/game.php',
             'wallpaper' => '',
             'profile_icon' => 'https://live.staticflickr.com/3755/13123111064_e4987c46fc_b.jpg'
-        ]
+        ],
+
+        [
+            'id' => '5',
+            'code'=> 'hoops',
+            'title' => 'Basketball',
+            'description' => "Play the Best Online Basketball Games for Free",
+            'path' => 'hoops/game.php',
+            'wallpaper' => '',
+            'profile_icon' => 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTgyZ9IEMcFZtEBtvlw1yuVQto2pIXVOqY_ow&s'
+        ],
+
+        [
+            'id' => '6',
+            'code'=> 'Snake',
+            'title' => 'Snake',
+            'description' => "Snake is a genre of action video games where the player maneuvers the end of a growing line, often themed as a snake. 
+            The player must keep the snake from colliding with both other obstacles and itself, which gets harder as the snake lengthens.",
+            'path' => 'snake/game.php',
+            'wallpaper' => '',
+            'profile_icon' => 'https://i.pinimg.com/736x/ab/b6/4b/abb64b57fe2a21ea678cd5602d4b6b98.jpg'
+        ],
     ];
 ?>
+
