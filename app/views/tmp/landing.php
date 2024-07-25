@@ -24,7 +24,6 @@
       <link rel="stylesheet" href="<?php echo _path_tmp('landing-tmp/css/jquery.mCustomScrollbar.min.css')?>">
       <!-- Tweaks for older IEs-->
       <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css">
-      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.5/jquery.fancybox.min.css" media="screen">
       <?php produce('style')?>
    </head>
    <!-- body -->
@@ -344,6 +343,5 @@
       <!-- sidebar -->
       <script src="<?php echo _path_tmp('landing-tmp/js/jquery.mCustomScrollbar.concat.min.js')?>"></script>
       <script src="<?php echo _path_tmp('landing-tmp/js/custom.js')?>"></script>
-      <script src="https:cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.5/jquery.fancybox.min.js"></script>
    </body>
 </html>
