@@ -13,6 +13,4 @@ function gameScoreSave(gameId, score) {
             console.log(response);
         }
     });
-
-    console.log('game score saved');
 }
