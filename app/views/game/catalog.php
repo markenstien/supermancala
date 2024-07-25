@@ -3,7 +3,7 @@
 			<div class="container">
 				<div class="row">
 					<?php foreach($games as $key => $row) :?>
-						<div class="col-xl-4 col-lg-4 col-md-4 col-sm-12">
+						<div class="col-xl-4 col-lg-4 col-md-4 col-sm-12 mb-5">
 							<div class="about-box">
 								<figure><img src="<?php echo $row['profile_icon']?>" alt="#" /></figure>
 								<h3> <?php echo $row['title']?></h3>

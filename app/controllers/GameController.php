@@ -89,6 +89,19 @@
 					$gamePath = 'game/lucky9';
 				break;
 
+				case 'Mancala':
+					/**
+					 * create point per clear
+					 * create computer player
+					 */
+					// $data['game'] = $game;	
+					// $data['gameData'] = $gameData;
+					// $data['gameScoreDetails'] = $gameScoreDetails;
+					// $data['boardLength'] = 6;
+					
+					// return $this->view('game/mancala/game', $data);
+				break;
+
 				case 'hoops':
 					/**
 					 * create point per clear
@@ -111,6 +124,12 @@
 			$data['gameScoreDetails'] = $gameScoreDetails;
 			
 			return $this->view('game/play', $data);
+		}
+
+		public function playMancala() {
+			return $this->view('game/mancala/game', [
+				'boardLength' => 6
+			]);
 		}
 
 		public function gameIndex() {

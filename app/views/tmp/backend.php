@@ -119,53 +119,10 @@
 
     <!-- core:js -->
     <script src="<?php echo _path_tmp('main-tmp/assets/vendors/core/core.js')?>"></script>
+    <script src="<?php echo _path_public('js/jquery.js')?>"></script>
     <script src="<?php echo _path_public('js/core.js')?>"></script>
     <script src="<?php echo _path_public('js/global.js')?>"></script>
+    <script src="<?php echo _path_public('js/game.js')?>"></script>
     <?php produce('scripts')?>
-    <!-- endinject -->
-
-    <!-- Plugin js for this page -->
-    <!-- End plugin js for this page -->
-
-    <!-- inject:js -->
-    <script src="<?php echo _path_tmp('main-tmp/assets/vendors/feather-icons/feather.min.js')?>"></script>
-    <script src="<?php echo _path_tmp('main-tmp/assets/js/template.js')?>"></script>
-    <!-- endinject -->
-
-    <!-- Plugin js for this page -->
-    <script src="<?php echo _path_tmp('main-tmp/assets/vendors/datatables.net/jquery.dataTables.js')?>"></script>
-    <script src="<?php echo _path_tmp('main-tmp/assets/vendors/datatables.net-bs4/dataTables.bootstrap4.js')?>"></script>
-
-    <script type="text/javascript" defer>
-        $(function() {
-          'use strict';
-
-          $(function() {
-            $('.dataTable').DataTable({
-              "aLengthMenu": [
-                [10, 30, 50, -1],
-                [10, 30, 50, "All"]
-              ],
-              "iDisplayLength": 10,
-              "language": {
-                search: ""
-              }
-            });
-            $('.dataTable').each(function() {
-              var datatable = $(this);
-              // SEARCH - Add the placeholder for Search and Turn this into in-line form control
-              var search_input = datatable.closest('.dataTables_wrapper').find('div[id$=_filter] input');
-              search_input.attr('placeholder', 'Search');
-              search_input.removeClass('form-control-sm');
-              // LENGTH - Inline-Form control
-              var length_sel = datatable.closest('.dataTables_wrapper').find('div[id$=_length] select');
-              length_sel.removeClass('form-control-sm');
-            });
-          });
-
-        });
-    </script>
-    <!-- Custom js for this page -->
-  <!-- End custom js for this page -->
 </body>
 </html>

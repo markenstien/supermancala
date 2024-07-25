@@ -7,7 +7,7 @@
             <div class="col-md-2">
                 <h3>Instructions</h3>
                 <div id="instruction">
-                    <p style="font-size: 10pt;">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quaerat animi ea ipsam sed natus dolor odio numquam,</p>
+                    <p style="font-size: 10pt;"><?php echo $gameData['description']?></p>
                 </div>
                 <?php echo wDivider()?>
                 <section>
@@ -27,9 +27,13 @@
                 <div class="text-center">
                     <h1><?php echo $gameData['title']?></h1>
                 </div>
+                <?php if(isEqual($game, 'mancala')) :?>
+                    <h3>Sunka is only available, fullscreen or desktop</h3>
+                    <a href="/GameController/playMancala">Play here.</a>
+                <?php else :?>
                 <iframe src="<?php echo GET_PATH_RESOURCE.DS.'games/'.$game.'/main.php'?>" frameborder="0"
                     style="width: 800px;  height:700px;margin:0px auto; display:block"></iframe>
-                
+                <?php endif?>
                 <?php echo wDivider() ?>
             </div>
             <div class="col-md-3">

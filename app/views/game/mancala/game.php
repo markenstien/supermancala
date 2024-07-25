@@ -170,7 +170,8 @@
 	</style>
 <?php endbuild()?>
 
-<script>
+<?php build('scripts') ?>
+<script defer>
 	$(document).ready(function(){
 	const boxSize = 6;
 
@@ -471,6 +472,7 @@
 			} else {
 				alert('PLAYER B WINS');
 			}
+			gameScoreSave(4, getTotalPebbles('a'));
 		}
 
 		usersTurn = invertSection(usersTurn);
@@ -605,4 +607,6 @@
 	});
 });
 </script>
+<?php endbuild()?>
+
 <?php loadTo()?>

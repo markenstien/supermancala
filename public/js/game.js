@@ -2,7 +2,9 @@ const GAMES = {
     horseracing : 1,
     tetris : 2,
     lucky9 : 3,
-    hoops : 4,
+    mancala : 4,
+    snake : 6,
+    hoops : 5,
 }
 function gameScoreSave(gameId, score) {
     $.ajax({
